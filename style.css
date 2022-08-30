@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+header div {
+  min-height: 80px;
+}
+
+.btn {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.btn-outline-primary:hover {
+	background: #0d6efd47;
+}
