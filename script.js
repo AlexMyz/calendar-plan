@@ -198,9 +198,7 @@ document.getElementById('form-main').addEventListener('submit', (event) => {
 			let fullDate = day + '.' + month + '.' + year;
 			out.innerHTML += `
 				<tr>
-					<td>${n}</td>
 					<td>${fullDate}</td>
-					<td>${getWeekDay(date)}</td>
 				</tr>
 			`
 		}
