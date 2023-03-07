@@ -1,222 +1,676 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MS1SN249J5"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-MS1SN249J5"
+    ></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-    gtag('config', 'G-MS1SN249J5');
+      gtag("config", "G-MS1SN249J5");
     </script>
-	<title>calendar-plan</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>calendar-plan</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- CSS only -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="icon" type="image/x-icon" href="img/favicon_new.png">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="icon" type="image/x-icon" href="img/favicon_new.png" />
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous" defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <!-- SheetJS the latest version -->
+    <script
+      lang="javascript"
+      src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"
+    ></script>
     <script src="./dist/index.js" defer></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="wrapper d-flex flex-column min-vh-100">
-        <header class="bg-primary">
-            <div class="container d-flex align-items-center justify-content-between text-white">
-                <img src="img/favicon_new.png" alt="logo">
-                <h1 class="text-center m-2">Календар для вчителя 2022 / 2023</h1>
-                <button class="invisible" disabled>завантажити</button>
-            </div>
-        </header>
-    
-        <main class="container mb-5">
-            <div class="row">
-                <div class="holidays col-md-4 mt-3 bg-primary text-white rounded-3">
-                    <div class="p-3">
-                        <button class="btn btn-primary border border-white mb-3 w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
-                            Святкові дні
-                        </button>
-                        <div class="collapse bg-p" id="collapseExample1">
-                            <p>24 серпня — День незaлежності України;</p>
-                            <p>14 жовтня — День захисників і захисниць України;</p>
-                            <p>25 грудня — Різдво Христове</p>
-                        </div>
-                    </div>
-                    <!-- <div class="p-3">
-                    <button class="btn btn-primary border border-white mb-3 w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
-                        Перенос рабочих дней если совпадают государственный праздник с выходным
-                    </button>
-                    <div class="collapse bg-p" id="collapseExample2">
-                        <p>25 декабря 2021, суббота, Рождество - пеpеносится на понедельник 27 декабря 2021;</p>
-                        <p>1 января 2022, суббота, Новый год - переносится на пoнедельник 3 января 2022;</p>
-                        <p>24 апреля 2022, воскресенье, Пасха - пeреносится на понедельник 25 апреля 2022;</p>
-                        <p>1 мая 2022, воскресенье, День труда - пеpеносится на понедельник 2 мая 2022;</p>
-                        <p>12 июня 2022, воскресенье, Троица - пeреносится на понедельник 13 июня 2022;</p>
-                    </div>
-                    </div> -->
-                    <!-- <div class="p-3">
-                    <button class="btn btn-primary border border-white mb-3 w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
-                        перенос рабочих дней по рекомендации правительства
-                    </button>
-                    <div class="collapse bg-p" id="collapseExample3">
-                        <p>с пятницы 15 октября 2021 на субботу 23 октября 2021;</p>
-                        <p>с понедельника 7 марта 2022 на субботу 12 марта 2022;</p>
-                        <p>с понедельника 27 июня 2022 на субботу 2 июля 2022.</p>
-                    </div>
-                    </div> -->
-                    <div class="p-3">
-                        <button class="btn btn-primary border border-white mb-3 w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample4">
-                            Канікули
-                        </button>
-                        <div class="collapse show bg-p" id="collapseExample4">
-                            <div class="vacation-fall d-flex justify-content-between align-items-center mb-2">
-                                <div>з <span id="startDateVacationFall">22.10.2022</span> до <span id="endDateVacationFall">30.10.2022</span> </div>
-                                <button type="button" class="btn btn-primary btn-editVacation" data-vacation-name='vacationFall' data-bs-toggle="modal" data-bs-target="#modalChangeDate">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="vacation-winter d-flex justify-content-between align-items-center mb-2">
-                                <div>з <span id="startDateVacationWinter">24.12.2022</span> до <span id="endDateVacationWinter">08.01.2023</span> </div>
-                                <button type="button" class="btn btn-primary btn-editVacation" data-vacation-name='vacationWinter' data-bs-toggle="modal" data-bs-target="#modalChangeDate">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="vacation-spring d-flex justify-content-between align-items-center">
-                                <div>з <span id="startDateVacationSpring">25.03.2023</span> до <span id="endDateVacationSpring">02.04.2023</span> </div>
-                                <button type="button" class="btn btn-primary btn-editVacation" data-vacation-name='vacationSpring' data-bs-toggle="modal" data-bs-target="#modalChangeDate">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+      <header class="bg-primary">
+        <div
+          class="container d-flex align-items-center justify-content-between text-white"
+        >
+          <img src="img/favicon_new.png" alt="logo" />
+          <h1 class="text-center m-2">Календар для вчителя</h1>
+          <h2 class="text-center m-2" id="title">
+            <span></span> / <span></span>
+          </h2>
+        </div>
+      </header>
+
+      <main class="container mb-5">
+        <div class="row">
+          <div class="col-md-4 mt-3 bg-primary text-white rounded-3">
+            <div class="p-3">
+              <button
+                class="btn btn-primary border border-white mb-3 w-100"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseHolidays"
+                aria-expanded="false"
+                aria-controls="collapseHolidays"
+              >
+                Святкові дні
+              </button>
+              <div class="collapse bg-p" id="collapseHolidays">
+                <div class="alert alert-danger" role="alert">
+                  Через запроваджений воєнний стан святкові дні стають
+                  звичайними календарними днями.
                 </div>
-    
-            
-            <!-- Modal -->
-            <div class="modal fade" id="modalChangeDate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Введіть нові дати</h5>
-                            <button type="button" class="btn-close modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="editDatesVacation" class="needs-validation row" novalidate>
-                                <div class="col-sm-6">
-                                    <label for="date-start-modal" class="form-label">введіть початкову дату</label>
-                                    <input class="form-control" type="date" id="dateStartModal" name="start-modal" data-bs-toggle="tooltip" data-bs-html="true" title="введіть початкову дату" required>
-                                    <div class="invalid-feedback">
-                                        введіть початкову дату
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="date-end-modal" class="form-label">введіть кінцеву дату</label>
-                                    <input class="form-control" type="date" id="dateEndModal" name="end-modal" data-bs-toggle="tooltip" data-bs-html="true" title="введіть кінцеву дату" required>
-                                    <div class="invalid-feedback">
-                                        введіть кінцеву дату
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary modal-close" data-bs-dismiss="modal">Закрити</button>
-                            <button type="button submit" class="btn btn-primary" form="editDatesVacation" data-bs-dismis>Зберегти зміни</button>
-                        </div>
-                    </div>
+              </div>
+            </div>
+            <div class="p-3">
+              <button
+                class="btn btn-primary border border-white mb-3 w-100"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTransfer1"
+                aria-expanded="false"
+                aria-controls="collapseTransfer1"
+              >
+                Перенесення вихідних днів
+              </button>
+              <div class="collapse bg-p" id="collapseTransfer1">
+                <div class="alert alert-danger" role="alert">
+                  Через запроваджений воєнний стан святкові дні стають
+                  звичайними календарними днями. Тому переноси не передбаченні.
                 </div>
+              </div>
             </div>
-    
-    
-            
-            <div class="counting col-md-6 m-3">
-                <h4 class="text-center">Вибір семестру</h4>
-    
-                <div class="semesters d-flex justify-content-center">
-                    <button type="button" class="btn btn-primary m-3 semester first-semester">І семестр</button>
-                    <button type="button" class="btn btn-primary m-3 semester second-semester">ІІ семестр</button>
+            <div class="p-3 d-none">
+              <button
+                class="btn btn-primary border border-white mb-3 w-100"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTransfer2"
+                aria-expanded="false"
+                aria-controls="collapseTransfer2"
+              >
+                Перенесення робочих днів за рекомендацією уряду
+              </button>
+              <div class="collapse bg-p" id="collapseTransfer2"></div>
+            </div>
+            <div class="p-3">
+              <button
+                class="btn btn-primary border border-white mb-3 w-100"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseVacations"
+                aria-expanded="false"
+                aria-controls="collapseVacations"
+              >
+                Канікули
+              </button>
+              <div class="collapse show bg-p" id="collapseVacations">
+                <div id="vacations"></div>
+                <button
+                  type="button"
+                  class="btn btn-primary border border-white w-100 mt-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalEditVacationDates"
+                  id="btnAddVacation"
+                >
+                  Додати канікули
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Change Vacation Dates  -->
+          <div
+            class="modal fade"
+            id="modalEditVacationDates"
+            tabindex="-1"
+            aria-labelledby="modalEditVacationDatesLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalEditVacationDatesLabel">
+                    Введіть нові дати
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close modal-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
                 </div>
-                
-                <h4 class="text-center m-3">Або виберіть дату в ручну</h4>
-    
-                <form id="form-main" class="text-center needs-validation" novalidate>	
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label for="date-start-modal" class="form-label">введіть початкову дату</label>
-                            <input class="form-control" type="date" id="start-date" name="start" data-bs-toggle="tooltip" data-bs-html="true" title="введіть початкову дату" required>
-                            <div class="invalid-feedback">
-                                введіть початкову дату
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="date-end-modal" class="form-label">введіть кінцеву дату</label>
-                            <input class="form-control" type="date" id="end-date" name="end" data-bs-toggle="tooltip" data-bs-html="true" title="введіть кінцеву дату" required>
-                            <div class="invalid-feedback">
-                                введіть кінцеву дату
-                            </div>
-                        </div>
+                <div class="modal-body">
+                  <form
+                    id="formEditVacationDates"
+                    class="needs-validation row"
+                    novalidate
+                  >
+                    <div class="col-sm-6">
+                      <label for="date-start-modal" class="form-label"
+                        >введіть початкову дату</label
+                      >
+                      <input
+                        class="form-control"
+                        type="date"
+                        name="inputVacationDate"
+                        data-bs-toggle="tooltip"
+                        data-bs-html="true"
+                        title="введіть початкову дату"
+                        required
+                      />
+                      <div class="invalid-feedback">введіть початкову дату</div>
                     </div>
-                    <!-- <div class="d-flex justify-content-center">
-                        <input class="m-3" type="date" id="start-date" name="start" data-bs-toggle="tooltip" data-bs-html="true" title="выберете начальную дату" required>
-                        <input class="m-3" type="date" id="end-date" name="end" data-bs-toggle="tooltip" data-bs-html="true" title="выберете конечную дату" required>
-                    </div> -->
-        
-                    <h4 class="text-center m-3">Вибір днів тижня</h4>
-        
-                    <div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic checkbox toggle button group">
-                        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" name="day" value="1">
-                        <label class="btn btn-outline-primary" for="btncheck1">Пн</label>
-        
-                        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" name="day" value="2">
-                        <label class="btn btn-outline-primary" for="btncheck2">В</label>
-        
-                        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="day" value="3">
-                        <label class="btn btn-outline-primary" for="btncheck3">С</label>
-        
-                        <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" name="day" value="4">
-                        <label class="btn btn-outline-primary" for="btncheck4">Ч</label>
-        
-                        <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off" name="day" value="5">
-                        <label class="btn btn-outline-primary" for="btncheck5">Пт</label>
+                    <div class="col-sm-6">
+                      <label for="date-end-modal" class="form-label"
+                        >введіть кінцеву дату</label
+                      >
+                      <input
+                        class="form-control"
+                        type="date"
+                        name="inputVacationDate"
+                        data-bs-toggle="tooltip"
+                        data-bs-html="true"
+                        title="введіть кінцеву дату"
+                        required
+                      />
+                      <div class="invalid-feedback">введіть кінцеву дату</div>
                     </div>
-                    <div class="text-danger mt-3 d-none invalid-feedback-checkbox">
-                        виберіть день тижня
+                    <div
+                      class="text-danger text-center mt-3 d-none validationRange"
+                    >
+                      введіть правильний діапазон дат
                     </div>
-    
-                    <button type="submit" class="btn btn-primary btn-lg m-5">Почати</button>
-                </form>
-    
-                <table class="table table-striped table-bordered text-center">
-                <tbody id="out"></tbody>
-                </table>
-    
+                  </form>
+                </div>
+
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary modal-close"
+                    data-bs-dismiss="modal"
+                  >
+                    Закрити
+                  </button>
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    form="formEditVacationDates"
+                    data-bs-dismis
+                  >
+                    Зберегти зміни
+                  </button>
+                </div>
+              </div>
             </div>
+          </div>
+          <!-- /Modal Change Vacations Dates  -->
+
+          <!-- Modal Delete Vacation  -->
+          <div
+            class="modal fade"
+            id="modalDeleteVacation"
+            tabindex="-1"
+            aria-labelledby="modalDeleteVacationLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="modalDeleteVacationLabel">
+                    Видалення канікул
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  Ви впевнені, що хочете видалити дані канікули?
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Закрити
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    id="btnConfirmDeleteVacation"
+                    data-bs-dismiss="modal"
+                  >
+                    Видалити
+                  </button>
+                </div>
+              </div>
             </div>
-        </main>
-    
-        <footer class="bg-primary mt-auto">
-            <div class="container">
-                <div class="py-5 row align-items-center">
-                    <div class="col-md-8 col-sm-12">
+          </div>
+          <!-- /Modal Delete Vacation  -->
+
+          <div class="counting col-md-6 m-3">
+            <h4 class="text-center">Вибір семестру</h4>
+
+            <div class="semesters d-flex justify-content-center">
+              <button
+                type="button"
+                class="btn btn-primary m-3"
+                id="btnFirstSemester"
+              >
+                І семестр
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary m-3"
+                id="btnSecondSemester"
+              >
+                ІІ семестр
+              </button>
+            </div>
+
+            <h4 class="text-center m-3">Або виберіть дату в ручну</h4>
+
+            <form
+              id="form-main"
+              class="text-center needs-validation"
+              novalidate
+            >
+              <div class="row">
+                <div class="col-sm-6">
+                  <label for="start-date" class="form-label"
+                    >введіть початкову дату</label
+                  >
+                  <input
+                    class="form-control"
+                    type="date"
+                    id="start-date"
+                    name="start"
+                    data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    title="введіть початкову дату"
+                    required
+                  />
+                  <div class="invalid-feedback">введіть початкову дату</div>
+                </div>
+                <div class="col-sm-6">
+                  <label for="end-date" class="form-label"
+                    >введіть кінцеву дату</label
+                  >
+                  <input
+                    class="form-control"
+                    type="date"
+                    id="end-date"
+                    name="end"
+                    data-bs-toggle="tooltip"
+                    data-bs-html="true"
+                    title="введіть кінцеву дату"
+                    required
+                  />
+                  <div class="invalid-feedback">введіть кінцеву дату</div>
+                </div>
+              </div>
+
+              <h4 class="text-center m-3">Вибір днів тижня</h4>
+
+              <div class="text-danger my-3 d-none" id="feedbackCheckbox">
+                виберіть день тижня
+              </div>
+
+              <div
+                class="btn-group d-flex justify-content-center mb-3"
+                role="group"
+                aria-label="Basic checkbox toggle button group"
+              >
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="btncheck1"
+                  autocomplete="off"
+                  name="day"
+                  value="1"
+                />
+                <label class="btn btn-outline-primary" for="btncheck1"
+                  >Пн</label
+                >
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="btncheck2"
+                  autocomplete="off"
+                  name="day"
+                  value="2"
+                />
+                <label class="btn btn-outline-primary" for="btncheck2">В</label>
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="btncheck3"
+                  autocomplete="off"
+                  name="day"
+                  value="3"
+                />
+                <label class="btn btn-outline-primary" for="btncheck3">С</label>
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="btncheck4"
+                  autocomplete="off"
+                  name="day"
+                  value="4"
+                />
+                <label class="btn btn-outline-primary" for="btncheck4">Ч</label>
+
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  id="btncheck5"
+                  autocomplete="off"
+                  name="day"
+                  value="5"
+                />
+                <label class="btn btn-outline-primary" for="btncheck5"
+                  >Пт</label
+                >
+              </div>
+
+              <div>
+                <div class="collapse" id="extra-options">
+                  <div class="mb-5">
+                    <p>кількість уроків на день</p>
+                    <div class="d-flex">
+                      <select
+                        class="form-select selectNumberOfLessons"
+                        name="numberOfLessons"
+                        disabled
+                        data-odd-weeks="123"
+                      >
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="other">додати своє значення</option>
+                      </select>
+                      <select
+                        class="form-select selectNumberOfLessons"
+                        name="numberOfLessons"
+                        disabled
+                      >
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="other">додати своє значення</option>
+                      </select>
+                      <select
+                        class="form-select selectNumberOfLessons"
+                        name="numberOfLessons"
+                        disabled
+                      >
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="other">додати своє значення</option>
+                      </select>
+                      <select
+                        class="form-select selectNumberOfLessons"
+                        name="numberOfLessons"
+                        disabled
+                      >
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="other">додати своє значення</option>
+                      </select>
+                      <select
+                        class="form-select selectNumberOfLessons"
+                        name="numberOfLessons"
+                        disabled
+                      >
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="other">додати своє значення</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div>
+                    <p>початковий порядковий номер урока</p>
+                    <div class="d-flex align-items-center">
+                      <input
+                        type="number"
+                        min="1"
+                        value="1"
+                        class="form-control w-25 me-3"
+                        id="initialNumber"
+                      />
+                      <div class="w-75 text-start">введіть своє значення</div>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  class="btn btn-primary mt-3"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#extra-options"
+                  aria-expanded="false"
+                  aria-controls="extra-options"
+                >
+                  додаткові параметри
+                </button>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg m-5">
+                Почати
+              </button>
+            </form>
+
+            <!-- Modal Change Number Of Lessons -->
+            <div
+              class="modal fade"
+              id="modalNumberOfLessons"
+              tabindex="-1"
+              aria-labelledby="modalNumberOfLessons"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                      Введіть кількість уроків
+                    </h1>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body pe-5">
+                    <form
+                      class="needs-validation"
+                      id="changeNumberOfLessons"
+                      novalidate
+                    >
+                      <div class="form-check mb-3">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="radioWeek"
+                          id="radioEveryWeek"
+                          required
+                        />
+                        <label
+                          class="form-check-label mb-3"
+                          for="radioEveryWeek"
+                          >Кожен тиждень</label
+                        >
+                        <div>
+                          <input
+                            type="number"
+                            min="1"
+                            max="8"
+                            class="form-control inputNumderOfLessons"
+                            id="inputEveryWeek"
+                            disabled
+                            required
+                          />
+                          <div class="invalid-feedback">
+                            введіть кількість уроків
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="radioWeek"
+                          id="radioInAWeek"
+                        />
+                        <label class="form-check-label mb-3" for="radioInAWeek"
+                          >Через тиждень</label
+                        >
                         <div class="row">
-                            <div class="col-sm-12">
-                                <img src="img/footer/bio-icon.png" alt="logo" class="img-fluid">
+                          <div class="col">
+                            <label for="inputOddWeeks" class="form-label"
+                              >непарні тижні</label
+                            >
+                            <input
+                              type="number"
+                              min="0"
+                              max="8"
+                              class="form-control inputNumderOfLessons"
+                              name="inWeek"
+                              id="inputOddWeeks"
+                              disabled
+                              required
+                            />
+                            <div class="invalid-feedback">
+                              введіть кількість уроків
                             </div>
-                            <!-- <div class="col d-flex">
+                          </div>
+                          <div class="col">
+                            <label for="inputEvenWeeks" class="form-label"
+                              >парні тижні</label
+                            >
+                            <input
+                              type="number"
+                              min="0"
+                              max="8"
+                              class="form-control inputNumderOfLessons"
+                              name="inWeek"
+                              id="inputEvenWeeks"
+                              disabled
+                              required
+                            />
+                            <div class="invalid-feedback">
+                              введіть кількість уроків
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Закрити
+                    </button>
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                      id="submitNumderOfLessons"
+                      form="changeNumberOfLessons"
+                    >
+                      Зберегти зміни
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Modal Change Number Of Lessons -->
+
+            <!-- Output -->
+            <div class="text-center">
+              <div class="row">
+                <div class="col-2 p-0">
+                  <table class="table table-striped table-bordered text-center">
+                    <tbody id="out-count"></tbody>
+                  </table>
+                </div>
+                <div class="col p-0">
+                  <table class="table table-striped table-bordered text-center">
+                    <tbody id="out-date"></tbody>
+                  </table>
+                </div>
+                <div class="col-2 p-0">
+                  <table class="table table-striped table-bordered text-center">
+                    <tbody id="out-day"></tbody>
+                  </table>
+                </div>
+              </div>
+              <table
+                class="table table-striped table-bordered text-center d-none"
+              >
+                <tbody id="out-table"></tbody>
+              </table>
+              <button
+                type="button"
+                class="btn btn-primary mb-3 d-none"
+                id="exportXLSX"
+              >
+                Завантажити як XLSX
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="bg-primary mt-auto">
+        <div class="container">
+          <div class="py-5 row align-items-center">
+            <div class="col-md-8 col-sm-12">
+              <div class="row">
+                <div class="col-sm-12">
+                  <img
+                    src="img/footer/bio-icon.png"
+                    alt="logo"
+                    class="img-fluid"
+                  />
+                </div>
+                <!-- <div class="col d-flex">
                                 <a href="#">
                                     <img src="img/footer/facebook-icon.png" alt="facebook" class="h-50">
                                 </a>
@@ -224,25 +678,28 @@
                                     <img src="img/footer/instagram-icon.png" alt="instagram" class="h-50">
                                 </a>
                             </div> -->
-                        </div>
-                    </div>
-                    <div class="text-white col">
-                        <div class="mb-3">Побажання для покращення  функціоналу  календаря надсилайте на пошту:</div>
-                        <a class="text-white d-flex align-items-center" href="mailto:aleksandr.s.muzyka@gmail.com">
-                            <img src="img/footer/mail-icon.png" alt="email" class="img-fluid me-3">
-                            <div>aleksandr.s.muzyka@gmail.com</div>
-                        </a>
-                    </div>
-                </div>
+              </div>
             </div>
-        </footer>
+            <div class="text-white col">
+              <div class="mb-3">
+                Побажання для покращення функціоналу календаря надсилайте на
+                пошту:
+              </div>
+              <a
+                class="text-white d-flex align-items-center"
+                href="mailto:aleksandr.s.muzyka@gmail.com"
+              >
+                <img
+                  src="img/footer/mail-icon.png"
+                  alt="email"
+                  class="img-fluid me-3"
+                />
+                <div>aleksandr.s.muzyka@gmail.com</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
-    
-
-
-
-
-	
-	
-</body>
+  </body>
 </html>
