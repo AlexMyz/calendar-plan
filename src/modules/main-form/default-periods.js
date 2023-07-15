@@ -1,12 +1,14 @@
+import {firstSemesterYear, secondSemesterYear} from '../holidays/current-period'
+
 const defaultPeriods = () => {
   document.getElementById("btnFirstSemester").addEventListener("click", () => {
-    document.getElementById("start-date").value = "2022-09-01"
-    document.getElementById("end-date").value = "2022-12-23"
+    document.getElementById("start-date").value = `${firstSemesterYear}-09-01`
+    document.getElementById("end-date").value = `${firstSemesterYear}-12-31`
   })
 
   document.getElementById("btnSecondSemester").addEventListener("click", () => {
-    document.getElementById("start-date").value = "2023-01-09"
-    document.getElementById("end-date").value = "2023-06-30"
+    document.getElementById("start-date").value = `${secondSemesterYear}-01-01`
+    document.getElementById("end-date").value = `${secondSemesterYear}-06-30`
   })
 }
 
