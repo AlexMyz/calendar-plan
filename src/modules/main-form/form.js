@@ -55,6 +55,8 @@ const form = () => {
 
         let sn = document.getElementById("initialNumber").value
 
+        document.getElementById('spinner').classList.remove('d-none')
+        document.getElementById('output').classList.add('d-none')
         outputHead()
         document.getElementById("exportXLSX").classList.remove("d-none")
 
@@ -82,6 +84,12 @@ const form = () => {
             }
           }
         }
+
+        setTimeout(() => {
+          document.getElementById('spinner').classList.add('d-none')
+          document.getElementById('output').classList.remove('d-none')
+        }, 500);
+
       }
 
       this.classList.remove("was-validated")
