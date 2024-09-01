@@ -8,7 +8,7 @@ const defaultPeriods = () => {
 
   document.getElementById("btnSecondSemester").addEventListener("click", () => {
     document.getElementById("start-date").value = `${secondSemesterYear}-01-01`
-    document.getElementById("end-date").value = `${secondSemesterYear}-06-30`
+    document.getElementById("end-date").value = `${secondSemesterYear}-05-31`
   })
 }
 

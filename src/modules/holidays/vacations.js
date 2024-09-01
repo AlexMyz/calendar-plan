@@ -3,20 +3,20 @@ import { convertDate } from "../functions"
 const vacations = [
   {
     name: "fall",
-    startDate: "2023-10-30",
-    endDate: "2023-11-03",
+    startDate: "2024-10-28",
+    endDate: "2024-11-03",
     dates: [],
   },
   {
     name: "winter",
-    startDate: "2023-12-25",
-    endDate: "2024-01-05",
+    startDate: "2024-12-30",
+    endDate: "2025-01-12",
     dates: [],
   },
   {
     name: "spring",
-    startDate: "2024-03-18",
-    endDate: "2024-03-22",
+    startDate: "2025-03-24",
+    endDate: "2025-03-30",
     dates: [],
   },
 ]
