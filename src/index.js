@@ -5,6 +5,7 @@ import modalCountLessons from "./modules/main-form/modal-count-lessons"
 import form from "./modules/main-form/form"
 import exportXLSX from "./modules/main-form/exportXLSX"
 import resetForm from "./modules/main-form/reset-form"
+import adaptWeeks from "./modules/main-form/adapt-weeks"
 
 
 editVacations()

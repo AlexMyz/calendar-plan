@@ -86,8 +86,9 @@ const editVacations = () => {
           clickBtnEditVacation()
           clickBtnDeleteVacation()
         } else if (flag == "edit") {
-          editVacationDates(vacationName, startDate, endDate, displayVacationStartDate, displayVacationEndDate
-          )
+          editVacationDates(vacationName, startDate, endDate, displayVacationStartDate, displayVacationEndDate)
+          clickBtnEditVacation()
+          clickBtnDeleteVacation()
         }
 
         modalEditVacationDates.hide()

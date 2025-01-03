@@ -1,37 +1,8 @@
-import { arrHolidays } from "../holidays/holidays"
-import { arrVacations } from "../holidays/vacations"
-import { outputReset, outputHead, outputTable } from "./output"
-import { getWeek } from "../functions"
+import { outputReset, outputHead } from "./output"
+import { adaptWeeks } from './adapt-weeks'
+import { result } from "./result"
 
 const form = () => {
-
-  const result = (startDate, endDate, daysWeek, sn) => {
-    // перебор всех дат в выбранном промежутке
-    for (let i = startDate; i <= endDate; i = i + 24 * 60 * 60 * 1000) {
-      // дата не должна входить в праздники и каникулы
-      if (!arrHolidays.includes(i) && !arrVacations.includes(i)) {
-        let date = new Date(i)
-
-        // проверка входит ли дата в массив дней недели
-        if (daysWeek.includes(date.getDay())) {
-          // значение количества уроков в день из select
-          let number = document.getElementsByName("numberOfLessons")[date.getDay() - 1].value
-          let numberValue = number.match(/\d/g)
-
-          if (numberValue.length == 2) {
-            if (getWeek(i, startDate) == "odd") {
-              sn = outputTable(numberValue[0], i, sn)
-            } else if (getWeek(i, startDate) == "even") {
-              sn = outputTable(numberValue[1], i, sn)
-            }
-          } else {
-            sn= outputTable(numberValue[0], i, sn)
-          }
-        }
-      }
-    }
-  }
-
   
   document.getElementById("form-main").addEventListener("submit", function(e) {
     e.preventDefault()
@@ -65,7 +36,7 @@ const form = () => {
         }
       }
 
-       // заполнение массива днецй недели
+       // заполнение массива дней недели
       for (let elem of document.getElementsByName("day")) {
         if (elem.checked) {
           daysWeek.push(+elem.value)
@@ -89,8 +60,12 @@ const form = () => {
         const endDate = Date.parse(endPeriod.value)
 
         let sn = document.getElementById("initialNumber").value
-
-        result(startDate, endDate, daysWeek, sn)
+        
+        if (document.getElementById("adaptWeeks").checked) {
+          adaptWeeks(startDate, endDate, daysWeek, sn)
+        } else {
+          result(startDate, endDate, daysWeek, sn)
+        }
 
         setTimeout(() => {
           document.getElementById('spinner').classList.add('d-none')

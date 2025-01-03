@@ -1,4 +1,4 @@
-import { vacations, createArrayDates, createArrVacations } from "./vacations"
+import { vacations, createArrayDates, createArrVacations, organazeVacations, outputVacations } from "./vacations"
 import { convertDate } from "../functions"
 
 export const editVacationDates = (vacationName, startDate, endDate, displayVacationStartDate, displayVacationEndDate) => {
@@ -7,6 +7,9 @@ export const editVacationDates = (vacationName, startDate, endDate, displayVacat
     foundVacation.endDate = endDate
     displayVacationStartDate.innerText = convertDate(startDate)
     displayVacationEndDate.innerText = convertDate(endDate)
+
+    organazeVacations()
+    outputVacations()
     createArrayDates(vacationName)
     createArrVacations()
 }
