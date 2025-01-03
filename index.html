@@ -454,8 +454,14 @@
                       </select>
                     </div>
                   </div>
-                  <div>
-                    <p>початковий порядковий номер урока</p>
+                  <div class="mb-5 text-start">
+                    <input class="form-check-input me-3" type="checkbox" value="" id="adaptWeeks">
+                    <label class="form-check-label" for="adaptWeeks">
+                      адаптаційна система нумерації тижнів
+                    </label>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mb-5">
+                    <div class="me-5 text-start">Початковий порядковий номер урока</div>
                     <div class="d-flex align-items-center">
                       <input
                         type="number"
@@ -483,6 +489,7 @@
               <button type="submit" class="btn btn-primary btn-lg m-5">
                 Почати
               </button>
+              <button type="reset" class="btn btn-secondary btn-lg m-5 d-none" id="btnReset">Скинути</button>
             </form>
 
             <!-- Modal Change Number Of Lessons -->
